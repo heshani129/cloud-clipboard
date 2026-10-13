@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #1a202c;
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-top: 4px;
+}
+
+.tab-bar {
+  display: flex;
+  background: #e2e8f0;
+  border-radius: 8px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #4a5568;
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  color: #2b6cb0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 12px;
+}
+
+.input-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  resize: vertical;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.file-input {
+  margin-bottom: 12px;
+  display: block;
+  width: 100%;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background-color: #2b6cb0;
+}
+
+.secondary-btn {
+  padding: 8px 16px;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.divider {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pin-display {
+  margin-top: 20px;
+  text-align: center;
+  background: #ebf8ff;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.pin-code {
+  font-size: 2.2rem;
+  letter-spacing: 6px;
+  color: #2b6cb0;
+  margin: 8px 0;
+}
+
+.qr-box {
+  margin-top: 12px;
+}
+
+.pin-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.pin-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  text-align: center;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+}
+
+.retrieved-box {
+  margin-top: 20px;
+}
+
+.status-banner {
+  margin-top: 16px;
+  padding: 12px;
+  background: #edf2f7;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2d3748;
+}
