@@ -40,7 +40,7 @@ function App() {
   };
 
   // Handle Payload Retrieval (Receive Mode)
-  const handleRetrieve = async () => {
+  /*const handleRetrieve = async () => {
     if (inputPin.length !== 6) return setStatus('Please enter a valid 6-digit PIN.');
     setStatus('Retrieving content...');
     setRetrievedText('');
@@ -59,6 +59,47 @@ function App() {
         // If the endpoint returns binary stream (File), trigger direct download link
         window.open(`${API_BASE}/retrieve/${inputPin}`, '_blank');
         setStatus('File download initiated.');
+      }
+    }
+  };*/
+  const handleRetrieve = async () => {
+    if (inputPin.length !== 6) return setStatus('Please enter a valid 6-digit PIN.');
+    setStatus('Retrieving content...');
+    setRetrievedText('');
+
+    try {
+      const response = await axios.get(`${API_BASE}/retrieve/${inputPin}`, {
+        responseType: 'blob',
+      });
+      const contentType = response.headers['content-type'] || '';
+
+      if (contentType.includes('application/json')) {
+        // Text payload
+        const json = JSON.parse(await response.data.text());
+        setRetrievedText(json.data);
+        setStatus('Text content retrieved successfully!');
+      } else {
+        // File payload: read the filename from the header, then save it
+        const disposition = response.headers['content-disposition'] || '';
+        const match = /filename\*?=(?:UTF-8'')?"?([^";]+)"?/i.exec(disposition);
+        const filename = match ? decodeURIComponent(match[1]) : 'download';
+
+        const url = window.URL.createObjectURL(response.data);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+        setStatus('File downloaded successfully!');
+      }
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        setStatus('Invalid, expired, or already consumed PIN.');
+      } else {
+        console.error(err);
+        setStatus('Retrieval failed. Check that the backend server is running.');
       }
     }
   };
